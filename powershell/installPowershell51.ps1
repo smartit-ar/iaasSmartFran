@@ -3,7 +3,7 @@
 try{
     $params=@{
         Uri="https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-        OutFile="C:\Temp\psinstall.msu"
+        OutFile="C:\Temp\Win8.1AndW2K12R2-KB3191564-x64.msu"
     }
     Invoke-WebRequest @params
     wusa.exe $params.OutFile /quiet /log /norestart
