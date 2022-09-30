@@ -8,7 +8,8 @@ try{
     Invoke-WebRequest @params
     wusa.exe $params.OutFile /quiet /log /norestart
     # Ver en Visor de eventos
-    # Install. Source: WUSA
+    # Log: Install.
+    # Source: WUSA
     # Si el codigo de error es 2149842967 indica que 
     # 2149842967 is 0x80240017 in hexadecimal. 
     # According to Windows Update Agent Result Codes, it indicates that this hotfix is not applicable to your server.
