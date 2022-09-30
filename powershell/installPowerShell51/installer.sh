@@ -1,11 +1,17 @@
+VMNAME='sfcgvm11'
+RESGROUP='DEFAULTGROUP01'
+URI_DOWNLOAD='https://raw.githubusercontent.com/smartit-ar/iaasSmartFran/main/powershell/installPowerShell51/installPowershell51.ps1'
+URI_DW_PATH='C:\Temp\installPowershell51.ps1'
+URI_PRESET='[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12'
+
 az vm run-command invoke \
-	--resource-group "DEFAULTGROUP01" \
-	--name "sfcgvm11" --command-id 'RunPowerShellScript' \
-	--scripts '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri "https://raw.githubusercontent.com/smartit-ar/iaasSmartFran/main/powershell/installPowershell51.ps1" -OutFile "C:\Temp\installPowershell51.ps1"' \
+	--resource-group $RESGROUP \
+	--name $VMNAME --command-id 'RunPowerShellScript' \
+	--scripts '"$URI_PRESET"; Invoke-WebRequest -Uri "$URI_DOWNLOAD" -OutFile "$URI_DW_PATH"' \
 	--query 'value[*].message'
 	
 az vm run-command invoke \
-	--resource-group "DEFAULTGROUP01" \
-	--name "sfcgvm11" --command-id 'RunPowerShellScript' \
-	--scripts 'powershell.exe "C:\Temp\installPowershell51.ps1"' \
+	--resource-group $RESGROUP \
+	--name $VMNAME --command-id 'RunPowerShellScript' \
+	--scripts 'powershell.exe "$URI_DW_PATH"' \
 	--query 'value[*].message'
