@@ -1,4 +1,5 @@
 #!/bin/bash
+
 {
 	VMNAME='sfcgvm12'
 	RESGROUP='DEFAULTGROUP01'
